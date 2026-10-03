@@ -1,95 +1,217 @@
-# Data Cleaning & Visualization Project
+# Predictive Modeling Using Machine Learning
 
 ## Project Overview
 
-This project focuses on cleaning, preprocessing, analyzing, and visualizing a raw dataset using Python.
+This project demonstrates the development of supervised machine learning models to predict outcomes from a real-world classification dataset.
 
-The project demonstrates practical data analysis techniques including missing value handling, duplicate detection, outlier detection, exploratory data analysis, and data visualization.
+The project uses the **Breast Cancer Wisconsin Diagnostic Dataset** available through Scikit-learn and applies machine learning algorithms to classify observations into two target categories.
+
+The complete workflow includes data exploration, preprocessing, model training, evaluation, performance comparison, and visualization.
+
+---
 
 ## Objectives
 
-* Clean raw data
-* Handle missing values
-* Detect and remove duplicate records
-* Detect numerical outliers using the IQR method
-* Perform exploratory data analysis
-* Create meaningful visualizations
-* Generate key insights from the dataset
-* Export the cleaned dataset
+* Understand supervised machine learning
+* Prepare and preprocess a dataset for modeling
+* Split data into training and testing sets
+* Train multiple classification models
+* Evaluate model performance using different metrics
+* Visualize classification performance
+* Identify important features influencing predictions
+* Save the trained machine learning model for future use
 
-## Technologies Used
+---
 
-* Python
-* Pandas
-* Matplotlib
-* Seaborn
+## Dataset
 
-## Data Cleaning
+The project uses the **Breast Cancer Wisconsin Diagnostic Dataset** provided by Scikit-learn.
 
-The following preprocessing steps were performed:
+The dataset contains numerical measurements computed from digitized images of breast mass samples.
 
-1. Dataset loading
-2. Data understanding
-3. Missing value detection and handling
-4. Duplicate detection and removal
-5. Outlier detection using IQR
-6. Cleaned dataset export
+### Dataset Characteristics
+
+* **569 observations**
+* **30 numerical features**
+* **1 target variable**
+* Binary classification problem
+
+### Target Classes
+
+The target variable represents two classes:
+
+* `0` — Malignant
+* `1` — Benign
+
+The dataset is loaded directly from Scikit-learn, so no external dataset download is required.
+
+---
+
+## Machine Learning Algorithms
+
+### 1. Decision Tree Classifier
+
+A Decision Tree is a supervised learning algorithm that makes predictions by splitting the dataset into branches based on feature values.
+
+The model used in this project is configured with a maximum tree depth to help control model complexity.
+
+### 2. Random Forest Classifier
+
+Random Forest is an ensemble learning algorithm that combines multiple decision trees to produce a more robust prediction.
+
+The project uses multiple decision trees and evaluates their combined classification performance.
+
+---
+
+## Data Preprocessing
+
+The following preprocessing steps are performed:
+
+### Missing Value Check
+
+The dataset is checked for missing values before model training.
+
+### Duplicate Check
+
+Duplicate records are identified and removed when present.
+
+### Feature and Target Separation
+
+The input variables are separated from the target variable.
+
+### Train-Test Split
+
+The dataset is divided into:
+
+* **80% Training Data**
+* **20% Testing Data**
+
+A fixed random state is used to make the experiment reproducible.
+
+### Feature Scaling
+
+`StandardScaler` is used to standardize numerical features before training the models.
+
+---
+
+## Model Evaluation
+
+The trained models are evaluated using multiple classification metrics.
+
+### Accuracy
+
+Measures the overall percentage of correctly classified observations.
+
+### Precision
+
+Measures how many of the observations predicted as positive are actually positive.
+
+### Recall
+
+Measures how many of the actual positive observations were correctly identified.
+
+### F1 Score
+
+Provides a combined measure of precision and recall.
+
+### ROC-AUC
+
+Measures the model's ability to distinguish between the two target classes across different classification thresholds.
+
+---
 
 ## Visualizations
 
-The project generates the following visualizations:
+The project generates the following visual reports:
 
-* Salary Distribution
-* Average Salary by Department
-* Department Distribution
-* Age vs Salary
-* Salary Outlier Detection
-* Correlation Heatmap
+### 1. Random Forest Confusion Matrix
 
-## Project Structure
+Shows:
 
-```text
-data-cleaning-visualization/
-│
-├── data.py
-├── data.csv
-├── cleaned_data.csv
-├── README.md
-├── .gitignore
-│
-├── 01_salary_distribution.png
-├── 02_average_salary_department.png
-├── 03_department_distribution.png
-├── 04_age_vs_salary.png
-├── 05_salary_outliers.png
-└── 06_correlation_heatmap.png
+* True Positives
+* True Negatives
+* False Positives
+* False Negatives
+
+### 2. Decision Tree Confusion Matrix
+
+Provides the same classification error breakdown for the Decision Tree model.
+
+### 3. ROC Curve
+
+Compares the classification performance of:
+
+* Decision Tree
+* Random Forest
+
+using their ROC-AUC values.
+
+### 4. Model Accuracy Comparison
+
+A bar chart is generated to compare the accuracy of the two machine learning models.
+
+### 5. Feature Importance
+
+The top features contributing to Random Forest predictions are visualized.
+
+---
+
+## Technologies Used
+
+* **Python**
+* **Pandas**
+* **NumPy**
+* **Matplotlib**
+* **Seaborn**
+* **Scikit-learn**
+* **Joblib**
+
+---
+
+## Installation
+
+Install the required Python libraries:
+
+```bash
+py -m pip install pandas numpy matplotlib seaborn scikit-learn joblib
 ```
+
+---
 
 ## How to Run
 
-Install the required libraries:
+Run the Python program:
 
 ```bash
-py -m pip install pandas matplotlib seaborn
+py predictive_modeling.py
 ```
 
-Run the project:
+The program will train the machine learning models and automatically generate the evaluation results and visualization files.
 
-```bash
-py data.py
-```
+---
 
-## Output
+## Output Files
 
-The project produces a cleaned CSV file and six visualization images that help identify patterns, distributions, relationships, and outliers in the dataset.
+### `model_comparison.csv`
 
-## Key Learning Outcomes
+Contains the performance metrics of the machine learning models:
 
-* Data preprocessing using Pandas
-* Missing value handling
-* Duplicate detection
-* Outlier detection using IQR
-* Exploratory Data Analysis
-* Data visualization
-* Data storytelling
-* Exporting cleaned datasets and charts
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* AUC
+
+### `feature_importance.csv`
+
+Contains the feature importance values generated by the Random Forest model.
+
+### `random_forest_model.pkl`
+
+Saved trained Random Forest model.
+
+### `feature_scaler.pkl`
+
+Saved feature scaling model used during preprocessing.
+
+#
